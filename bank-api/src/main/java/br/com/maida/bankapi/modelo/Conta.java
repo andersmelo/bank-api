@@ -10,47 +10,60 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Conta {
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer numero;
+	private Integer number;
 	private BigDecimal balance;
-	
+
 	@ManyToOne
-	private Usuario usuario;
+	private Usuario user;
+
+	public Conta() {
+
+	}
+
 	
+	public Conta(Integer number, BigDecimal balance) {
+		this.number = number;
+		this.balance = balance;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public Integer getNumero() {
-		return numero;
+
+	public Integer getNumber() {
+		return number;
 	}
-	
-	public void setNumero(Integer numero) {
-		this.numero = numero;
+
+	public void setNumber(Integer number) {
+		this.number = number;
 	}
-	
+
 	public BigDecimal getBalance() {
 		return balance;
 	}
-	
+
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
-	
+
 	public Usuario getUsuario() {
-		return usuario;
+		return user;
 	}
-	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+
+	public void setUsuario(Usuario user) {
+		this.user = user;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

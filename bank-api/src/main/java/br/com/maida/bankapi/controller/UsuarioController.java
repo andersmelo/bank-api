@@ -2,6 +2,8 @@ package br.com.maida.bankapi.controller;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +24,7 @@ public class UsuarioController {
 	private UsuarioRepository usuarioRepository;
 
 	@PostMapping
-	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody UsuarioForm form, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody @Valid UsuarioForm form, UriComponentsBuilder uriBuilder) {
 		Usuario usuario = form.converter();
 		usuarioRepository.save(usuario);
 		URI uri = uriBuilder.path("/users/{id}").buildAndExpand(usuario.getId()).toUri();

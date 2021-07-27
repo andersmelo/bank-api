@@ -6,9 +6,9 @@ public class UsuarioDto {
 	private String name;
 	private String email;
 	
-	public UsuarioDto(Usuario usuario) {
-		this.name = usuario.getName();
-		this.email = usuario.getEmail();
+	public UsuarioDto(Usuario user) {
+		this.name = user.getName();
+		this.email = user.getEmail();
 		
 	}
 	public String getName() {

@@ -1,10 +1,25 @@
 package br.com.maida.bankapi.controller.form;
 
+
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import br.com.maida.bankapi.modelo.Usuario;
 
 public class UsuarioForm {
+	@NotNull 
+	@NotEmpty(message = "Preenchimento obrigatório!")
 	private String name;
+	
+	@NotEmpty(message = "Preenchimento obrigatório!")
+	@Email(message = "Email inválido!") 
 	private String email;
+	
+	@NotEmpty(message = "Preenchimento obrigatório!")
+	@Size(min = 6, max = 12, message = "Deve ter entre 6 a 12 caracteres")
 	private String password;
 
 	public String getName() {
