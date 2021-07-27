@@ -7,6 +7,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import br.com.maida.bankapi.modelo.Usuario;
 
 public class UsuarioForm {
@@ -47,7 +49,7 @@ public class UsuarioForm {
 	}
 
 	public Usuario converter() {
-		return new Usuario(name, email);
+		return new Usuario(name, email, new BCryptPasswordEncoder().encode(password));
 	}
 
 }

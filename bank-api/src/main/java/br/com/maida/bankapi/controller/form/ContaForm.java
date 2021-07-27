@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import br.com.maida.bankapi.modelo.Conta;
 
 
+
 public class ContaForm {
 	private Integer number;
 	private BigDecimal balance;

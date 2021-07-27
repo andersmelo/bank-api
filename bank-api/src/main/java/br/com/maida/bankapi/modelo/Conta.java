@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Conta {
 
@@ -20,9 +21,7 @@ public class Conta {
 	@ManyToOne
 	private Usuario user;
 
-	public Conta() {
 
-	}
 
 	
 	public Conta(Integer number, BigDecimal balance) {

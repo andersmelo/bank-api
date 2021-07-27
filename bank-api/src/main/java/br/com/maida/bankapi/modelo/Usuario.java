@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,7 +27,7 @@ public class Usuario implements UserDetails {
 	private Long id;
 	private String name;
 	private String email;
-	private String password;
+	private String senha;
 	@OneToMany
 	private List<Conta> contas = new ArrayList<>();
 	
@@ -34,12 +35,13 @@ public class Usuario implements UserDetails {
 	private List<Perfil> perfis = new ArrayList<>();
 
 	public Usuario() {
-
+		
 	}
-
-	public Usuario(String name, String email) {
+	
+	public Usuario(String name, String email, String senha) {
 		this.name = name;
 		this.email = email;
+		this.senha = senha;
 	}
 
 	public Long getId() {
@@ -73,13 +75,13 @@ public class Usuario implements UserDetails {
 	public void setContas(List<Conta> contas) {
 		this.contas = contas;
 	}
-
-	public String getPassword() {
-		return password;
+	
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
@@ -116,7 +118,12 @@ public class Usuario implements UserDetails {
 	public String getUsername() {
 		return this.email;
 	}
-
+	
+	@Override
+	public String getPassword() {
+		return this.senha;
+	}
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
