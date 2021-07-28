@@ -21,14 +21,11 @@ public class Conta {
 	@ManyToOne
 	private Usuario user;
 
-
-
-	
-	public Conta(Integer number, BigDecimal balance) {
+	public Conta(Integer number, BigDecimal balance, Usuario user) {
 		this.number = number;
 		this.balance = balance;
+		this.user = user;
 	}
-
 
 
 	public Long getId() {

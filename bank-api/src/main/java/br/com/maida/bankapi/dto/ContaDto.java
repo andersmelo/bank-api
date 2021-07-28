@@ -4,15 +4,16 @@ import java.math.BigDecimal;
 
 import br.com.maida.bankapi.modelo.Conta;
 
-
 public class ContaDto {
 	private Integer number;
 	private BigDecimal balance;
-
+	private String user;
+	
 	public ContaDto(Conta conta) {
 
 		this.number = conta.getNumber();
 		this.balance = conta.getBalance();
+		this.user = conta.getUsuario().getName();
 	}
 
 	public Integer getNumber() {
@@ -21,6 +22,10 @@ public class ContaDto {
 
 	public BigDecimal getBalance() {
 		return balance;
+	}
+
+	public String getUser() {
+		return user;
 	}
 
 

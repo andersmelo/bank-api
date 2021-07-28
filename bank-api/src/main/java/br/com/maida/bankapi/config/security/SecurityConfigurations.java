@@ -28,6 +28,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
 	@Override
 	@Bean
 	protected AuthenticationManager authenticationManager() throws Exception {
@@ -53,9 +54,10 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		
 	}
  
-	// Arquivos estáticos
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		super.configure(web);
+		web.ignoring()
+        .antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**", "/h2-console/**");
 	}
 }
