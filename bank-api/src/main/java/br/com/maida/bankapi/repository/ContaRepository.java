@@ -8,7 +8,7 @@ import br.com.maida.bankapi.modelo.Conta;
 
 public interface ContaRepository extends JpaRepository<Conta, Long>{
 
-	Optional<Conta> findByNumber(Integer number);
+	Optional<Conta> findByNumber(String number);
 
 
 }

@@ -5,31 +5,27 @@ import java.math.BigDecimal;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import br.com.maida.bankapi.modelo.Conta;
 import br.com.maida.bankapi.modelo.Usuario;
 
 
-
 public class ContaForm {
 	@NotNull 
 	@NotEmpty(message = "Preenchimento obrigatório!")
-	private Integer number;
+	private String number;
 	
 	@NotNull 
-	@NotEmpty(message = "Preenchimento obrigatório!")
-	@Size(min = 6, max = 12, message = "Saldo deve ser maior ou igual a 0.00.")
 	@Digits(integer = 10, fraction = 2, message = "O valor não está de acordo com o padrão!")
 	private BigDecimal balance;
 	private Usuario user;
 	
 	
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 

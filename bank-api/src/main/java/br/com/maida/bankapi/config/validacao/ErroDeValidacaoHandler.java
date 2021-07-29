@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import br.com.maida.bankapi.service.exception.ContaNaoEncontradaException;
+import br.com.maida.bankapi.service.exception.EmailJaExisteException;
+import br.com.maida.bankapi.service.exception.ObjetoJaExisteException;
+
 @RestControllerAdvice
 public class ErroDeValidacaoHandler {
 	
@@ -33,5 +37,23 @@ public class ErroDeValidacaoHandler {
 		});
 		
 		return dto;
+	}
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ObjetoJaExisteException.class)
+	public ErroDeFormularioDto handle(ObjetoJaExisteException exception) {
+		return new ErroDeFormularioDto(exception.getMessage(), "Já existe uma Conta com o numero informado!");
+	}
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ContaNaoEncontradaException.class)
+	public ErroDeFormularioDto handle(ContaNaoEncontradaException exception) {
+		return new ErroDeFormularioDto(exception.getMessage(), "Conta não encontrada!");
+	}
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(EmailJaExisteException.class)
+	public ErroDeFormularioDto handle(EmailJaExisteException exception) {
+		return new ErroDeFormularioDto(exception.getMessage(), "Já existe um usuário com o email informado!");
 	}
 }

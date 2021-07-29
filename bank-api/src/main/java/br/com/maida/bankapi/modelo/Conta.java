@@ -15,16 +15,20 @@ public class Conta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer number;
+	private String number;
 	private BigDecimal balance;
 
 	@ManyToOne
 	private Usuario user;
 
-	public Conta(Integer number, BigDecimal balance, Usuario user) {
+	public Conta(String number, BigDecimal balance, Usuario user) {
 		this.number = number;
 		this.balance = balance;
 		this.user = user;
+	}
+	
+	public Conta() {
+		
 	}
 
 
@@ -36,11 +40,11 @@ public class Conta {
 		this.id = id;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
